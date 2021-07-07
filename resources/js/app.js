@@ -1,0 +1,66 @@
+
+require('./bootstrap');
+
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter) 
+
+
+import ModalWizard from 'vue-modal-wizard'
+Vue.use(ModalWizard)
+
+ //router import
+ import {routes} from './routes';
+
+ //user class import
+ import User from './helpers/user'
+ window.User = User
+
+  //notification class import
+  import Notification from './helpers/Notification'
+  window.Notification = Notification
+
+
+
+
+ //sweetalert2 start
+ 
+ import Swal from 'sweetalert2'
+ window.Swal = Swal;
+
+ const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
+window.Toast = Toast;
+
+
+ //sweetalert end 
+
+ //window reload
+ window.Reload = new Vue();
+
+
+
+
+
+const router = new VueRouter({
+    routes ,
+    mode:'history'
+  })
+
+
+
+const app = new Vue({
+    el: '#app',
+    router
+});
