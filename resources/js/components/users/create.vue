@@ -5,33 +5,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Form Layouts</h2>
-                            <div class="breadcrumb-wrapper">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Forms</a>
-                                    </li>
-                                    <li class="breadcrumb-item active"><a href="#">Form Layouts</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrumb-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="app-todo.html"><i class="mr-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="mr-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="mr-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="mr-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             
 
 
 
@@ -43,49 +17,126 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Multiple Column</h4>
+                                    <h4 class="card-title">Add Users</h4>
+                                    <router-link to="/show-user" class="btn btn-primary">All users</router-link>
+
                                 </div>
                                 <div class="card-body">
-                                    <form class="form">
+
+                                    <form class="form" @submit.prevent="userInsert" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-column">First Name</label>
-                                                    <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column" />
+                                                    <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column" v-model="form.first_name" />
+                                                     <small class="text-danger" v-if="errors.first_name" >{{errors.first_name[0]}}  </small>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="last-name-column">Last Name</label>
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="lname-column" />
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="lname-column" v-model="form.last_name" />
+                                                     <small class="text-danger" v-if="errors.last_name" >{{errors.last_name[0]}}  </small>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="city-column">City</label>
-                                                    <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column" />
+                                                    <label for="last-name-column">Email</label>
+                                                    <input type="email" id="last-name-column" class="form-control" placeholder="Email  " name="lname-column" v-model="form.email" />
+                                                     <small class="text-danger" v-if="errors.email" >{{errors.email[0]}}  </small>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="country-floating">Country</label>
-                                                    <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country" />
+                                                    <label for="last-name-column">EPF</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="EPF Number" name="lname-column" v-model="form.epf" />
+                                                     <small class="text-danger" v-if="errors.epf" >{{errors.epf[0]}}  </small>
+
+                                                </div>
+                                            </div>
+                                              <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="last-name-column">NIC</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="NIC Number" name="lname-column" v-model="form.nic" />
+                                                     <small class="text-danger" v-if="errors.nic" >{{errors.nic[0]}}  </small>
+
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="last-name-column">Phone number</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Phone Number" name="lname-column" v-model="form.phone_number" />
+                                                     <small class="text-danger" v-if="errors.phone_number" >{{errors.phone_number[0]}}  </small>
+
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="last-name-column">Address</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Address " name="lname-column" v-model="form.address" />
+                                                     <small class="text-danger" v-if="errors.address" >{{errors.address[0]}}  </small>
+
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="last-name-column">City</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="City" name="lname-column" v-model="form.city" />
+                                                     <small class="text-danger" v-if="errors.city" >{{errors.city[0]}}  </small>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="company-column">Company</label>
-                                                    <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company" />
+                                                    <label for="last-name-column">Department</label>
+                             
+                                                        <select  class="custom-select" id="select1" v-model="form.department" >
+                                                            <option :value="department.id" v-for="department in departments" :key="department.id"> {{department.dname}} </option>
+
+                                                            
+                                                          </select>
+
+                                                     <small class="text-danger" v-if="errors.department" >{{errors.department[0]}}  </small>
+
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
+
+                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="email-id-column">Email</label>
-                                                    <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email" />
+                                                    <label for="last-name-column">Password</label>
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Password" name="lname-column" v-model="form.password" />
+                                                     <small class="text-danger" v-if="errors.password" >{{errors.password[0]}}  </small>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <button type="reset" class="btn btn-primary mr-1">Submit</button>
+
+
+                                          <div class="col-md-6 col-12">
+                                            <!-- header media -->
+                                            <div class="media">
+                                                <a href="javascript:void(0);" class="mr-25">
+                                                    <img  :src="form.photo"  class="rounded mr-50" alt="profile image" height="80" width="80" id="customFile"  />
+                                                     <small class="text-danger" v-if="errors.photo" >{{errors.photo[0]}}  </small>
+
+                                                </a>
+                                                <!-- upload and reset button -->
+                                                <div class="media-body mt-75 ml-1">
+                                                    <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
+                                                    <input  @change="onFileSelected" type="file" id="account-upload" hidden accept="image/*" />
+                                                    <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
+                                                    <p>Allowed JPG or PNG.</p>
+                                                </div>
+                                                <!--/ upload and reset button -->
+                                            </div>
+                                            <!--/ header media -->
+                                            </div>
+                                          
+                                            
+                                            <div class="col-md-6 col-12">
+                                              <br>
+                                                <button type="submit" class="btn btn-primary mr-1">Submit</button>
                                                 <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                             </div>
                                         </div>
@@ -105,9 +156,86 @@
 
 <script> 
 
-export default({
+  export default{
+                created(){
+                  if(!User.loggedIn()){
+                   this.$router.push({name: '/'})
+                  }
+                },
+
+                data(){
+                  return {
 
 
+                    form:{ 
+                      first_name:null,
+                      last_name:null,
+                      email:null,
+                      etf:null,
+                      nic:null,
+                      phone_number:null,
+                      address:null,
+                      City:null,
+                      department:null,
+                      password:null,
+                      photo:'',
 
-})
+                        },
+                        errors:{},
+                        users:{},
+                        departments:{}
+
+
+                      }
+                  },
+                
+
+                  methods:{
+                    onFileSelected(event){
+                      let file=event.target.files[0];
+
+                    //   if(file.size > 1048770)
+                    //   {
+                    //       Notification.image_validation()
+                    //       Notification.Cart_dalete()
+                    //       Notification.error()
+                    //       Notification.alert()
+                    //       Notification.cartsuccess()
+                    //       Notification.success()
+                    //   }
+                    //   else{
+                        let reader =new FileReader();
+                        reader.onload = event =>{
+                          this.form.photo = event.target.result
+                          console.log(event.target.result);
+                        };
+                        reader.readAsDataURL(file)
+                    //   }
+                    },
+
+
+                    userInsert(){
+                        axios.post('/api/userStore',this.form)
+                        .then(()=>{
+                          this.$router.push({name:'show-user'})
+                          Notification.success()
+                          
+                        })
+
+                   .catch(error => this.errors=error.response.data.errors )
+
+                    },
+                  },
+
+
+                  created(){
+                     axios.get('/api/department')
+                    .then(({data})=>(this.departments = data))
+                  },
+                  }
+
+
+              
+   
+
 </script>

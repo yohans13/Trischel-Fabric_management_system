@@ -12,6 +12,10 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\OrderController;
  
+use App\Http\Controllers\trischel\userController;
+use App\Http\Controllers\trischel\adminController;
+use App\Http\Controllers\trischel\sustainController;
+
 
 Route::group([
 
@@ -128,16 +132,34 @@ Route::group([
 
     
 
-    
-
-
-
     //for order page
     Route::get('/orders', [OrderController::class, 'todayorder']);
     Route::get('/order/details/{id}', [OrderController::class, 'orderdetails']);
     Route::get('/order/orderdetails/{id}', [OrderController::class, 'orderDetailsAll']);
 
 
+    // ----------------------------------------------------------------------------------------
     
+
+    //user page
+    Route::get('/user', [userController::class, 'index']);
+    Route::get('/department', [userController::class, 'getDepartment']);
+    Route::post('/userStore', [userController::class, 'store']);
+    Route::delete('/userDelete/{id}', [userController::class, 'destroy']);
+    Route::get('/userSelect/{id}', [userController::class, 'show']);
+    Route::patch('/userUpdate/{id}', [userController::class, 'update']);
+
     
+    Route::patch('/isActiveUser/{id}', [userController::class, 'isActive']); 
+    Route::patch('/isDeactiveUser/{id}', [userController::class, 'isDeactive']);
+
+    //admin page
+    Route::get('/admin', [adminController::class, 'index']);
+    Route::post('/adminStore', [adminController::class, 'store']);
+    Route::delete('/adminDelete/{id}', [adminController::class, 'destroy']);
+    Route::get('/adminSelect/{id}', [adminController::class, 'show']);
+    Route::patch('/adminUpdate/{id}', [adminController::class, 'update']); 
+
+    //sustainability page
     
+    Route::get('/years', [sustainController::class, 'years']);

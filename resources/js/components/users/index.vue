@@ -1,130 +1,246 @@
 <template>
-  <div>
+<div>
 
-   <div class="app-content content ">
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">DataTables</h2>
-                            <div class="breadcrumb-wrapper">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Datatable</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Basic
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrumb-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="app-todo.html"><i class="mr-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="mr-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="mr-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="mr-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="content-body">
-               
-                <!-- Basic table -->
-                <section id="basic-datatable">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <table class="datatables-basic table">
+                  <!-- Hoverable rows start -->
+                <div class="row" id="table-hover-row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">All Users Details</h4>
+                                 <router-link to="/store-user" class="btn btn-primary">Add Employees</router-link>
+                            </div>
+                           
+                            <div class="card-body">
+                                <p class="card-text">
+                                   <input type="text" v-model="searchTerm" placeholder="Search user name" class="form-control" style="width:300px;"> 
+
+                                </p>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th>id</th>
+                                            <th>Photo</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Date</th>
-                                            <th>Salary</th>
+                                            <th>Department</th>
+                                            <th>EPF</th>
+                                            <th>Phone Number</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                           
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <tr v-for="user in filtersearch" :key="user.id" >
+
+                                            <td>
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" :data-original-title="user.name">
+                                                <img  :src="user.photo" id="em_photo"  alt="Avatar" height="6" width="20" />
+                                                </div>
+                                            </td>
+                                            <td> {{user.name}}</td>
+                                            <td> {{user.dname}}</td>
+                                            <td> {{user.epf}}</td>
+                                            <td> {{user.phone}}</td> 
+
+                                          
+
+                                                <td v-if="user.is_active == true ">  
+                                                     <a @click="isActive(user.id)" > 
+                                                    <span class="badge badge-pill badge-light-primary mr-1">Active</span> 
+                                                     </a> 
+                                                    </td>  
+
+                                                    <td v-else>
+                                                     <a @click="isDeactive(user.id)" > 
+                                                    <span class="badge badge-pill badge-light-secondary mr-1">Deactive</span>
+                                                     </a> 
+
+                                                 </td> 
+                                            
+
+                                            <td> &nbsp&nbsp 
+                                                       <router-link  :to="{name:'edit-user' ,params:{id:user.id}}" > 
+                                                             <img v-bind:src="form.editicon" alt="edit" height="18" width="18" />
+                                                            <!-- <span>Edit</span> -->
+                                                        </router-link> &nbsp
+                                                        <a @click="deleteUser(user.id)" > 
+                                                             <img v-bind:src="form.trushicon"      alt="delete" height="18" width="18" />
+                                                            <!-- <span>Delete</span> -->
+                                                        </a>
+                                            </td>
+                                        </tr>
+                             
+                                     
+                                
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <!-- Modal to add new record -->
-                    <div class="modal modal-slide-in fade" id="modals-slide-in">
-                        <div class="modal-dialog sidebar-sm">
-                            <form class="add-new-record modal-content pt-0">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                                <div class="modal-header mb-1">
-                                    <h5 class="modal-title" id="exampleModalLabel">New Record</h5>
-                                </div>
-                                <div class="modal-body flex-grow-1">
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
-                                        <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="John Doe" aria-label="John Doe" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Post</label>
-                                        <input type="text" id="basic-icon-default-post" class="form-control dt-post" placeholder="Web Developer" aria-label="Web Developer" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-email">Email</label>
-                                        <input type="text" id="basic-icon-default-email" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" />
-                                        <small class="form-text text-muted"> You can use letters, numbers & periods </small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-date">Joining Date</label>
-                                        <input type="text" class="form-control dt-date" id="basic-icon-default-date" placeholder="MM/DD/YYYY" aria-label="MM/DD/YYYY" />
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="basic-icon-default-salary">Salary</label>
-                                        <input type="text" id="basic-icon-default-salary" class="form-control dt-salary" placeholder="$12000" aria-label="$12000" />
-                                    </div>
-                                    <button type="button" class="btn btn-primary data-submit mr-1">Submit</button>
-                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-                <!--/ Basic table -->
-
-         
-  
-
-            </div>
-        </div>
+                </div>
+                <!-- Hoverable rows end -->
     </div>
-
-</div>
+    </div>
+    </div>
+  </div>
 </template>
 
 
 
-<script type="text/javascript">
-   export default{
-             
+<script>
 
-               
-             
+   export default{
+                created(){
+                  if(!User.loggedIn()){
+                   this.$router.push({name: '/'})
+                  }
+                },
+                data(){
+                  return{
+
+                       form:{
+                  
+                   
+                    editicon: 'vbackend/app-assets/images/icons/edit.svg',
+                    trushicon: 'vbackend/app-assets/images/icons/trash.svg', 
+                     
+
+ 
+
+                         },
+
+
+                    users:[],
+                    searchTerm:'',
+                    
+                  }
+                },
+                computed:{
+                  filtersearch(){
+                    return this.users.filter(user=>{
+                      return user.name.match(this.searchTerm)
+                    })
+                  }
+                },
+                methods:{
+                  allusers(){
+                    axios.get('/api/user')
+                    .then(({data})=>(this.users=data))
+
+                    .catch()
+                  },
+                   
+                
+                deleteUser(id){
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "You won't be able to revert this!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        
+                          axios.delete('/api/userDelete/'+id)
+                            .then(() =>{
+                                this.users = this.users.filter(user =>{
+                                  return user.id != id
+                                })
+                            })
+                            .catch(()=>{
+                              this.$route.push({name:'show-user'})
+                            })
+                          Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        )
+                      }
+                    })  
+
+                },
+
+                isActive(id){
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "Deactive this employee!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, Deactive it!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        
+                          axios.patch('/api/isActiveUser/'+id)
+                            .then(() =>{
+                                window.location.reload();
+                                // location.reload();
+                              
+                            })
+                            .catch(()=>{
+                              this.$route.push({name:'show-user'})
+                            })
+                          Swal.fire(
+                          'Deactivated!',
+                          'This Account has been Deactivated.',
+                          'success'
+                        )
+                      }
+                    })  
+
+                },
+
+
+
+                 isDeactive(id){
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "Deactive this employee!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, Re-active it!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        
+                          axios.patch('/api/isDeactiveUser/'+id)
+                            .then(() =>{
+                                 
+                                window.location.reload();
+
+                            })
+                            .catch(()=>{
+                              this.$route.push({name:'show-user'})
+                            })
+                          Swal.fire(
+                          'Deactivated!',
+                          'This Account has been Activated.',
+                          'success'
+                        )
+                      }
+                    })  
+
+                },
+
+
+              },
+
+                created(){
+                  this.allusers();
+                }
+
                   
               
    }
 </script>
-
-
-
-<style type="text/css">
-
-#em_photo{
-  height:50px;
-  width:40px;
-}
-</style>

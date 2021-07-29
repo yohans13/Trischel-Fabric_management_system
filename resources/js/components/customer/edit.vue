@@ -72,6 +72,7 @@
                            
                               <div class="col-md-6">
                                 <img :src="form.photo" alt="Img" style="height:40px; width:40px;">
+
                               </div>
                             </div>
 
@@ -125,7 +126,7 @@
 
                    created(){
                     let id =this.$route.params.id
-                    axios.get('/api/customerSelect/'+id)
+                    axios.get('/api/customerSelect'+id)
                     .then (({data}) =>(this.form=data))
                     .catch(console.log('error'))
                   },

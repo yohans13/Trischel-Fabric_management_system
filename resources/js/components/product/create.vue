@@ -16,6 +16,7 @@
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Add Product</h1>
                     </div>
+
                    <form class="user" @submit.prevent="productInsert" enctype="multipart/form-data" >
 
                       <div class="form-group">
@@ -216,6 +217,7 @@
                         reader.readAsDataURL(file)
                       }
                     },
+
                     productInsert(){
                         axios.post('/api/productStore',this.form)
                         .then(()=>{

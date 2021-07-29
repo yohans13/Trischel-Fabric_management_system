@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('etf')->unique(); 
-            $table->string('nid')->nullable();
-            $table->string('is_active');
+            $table->string('epf')->unique(); 
+            $table->string('nic')->nullable();
+            $table->boolean('is_active');
             $table->string('phone');
             $table->string('address');
             $table->string('city');

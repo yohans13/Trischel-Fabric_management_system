@@ -10,16 +10,33 @@ Vue.use(VueRouter)
 import ModalWizard from 'vue-modal-wizard'
 Vue.use(ModalWizard)
 
- //router import
- import {routes} from './routes';
+  //router import
+  import {routes} from './routes';
 
- //user class import
- import User from './helpers/user'
- window.User = User
+  //user class import
+  import User from './helpers/user'
+  window.User = User
 
   //notification class import
   import Notification from './helpers/Notification'
   window.Notification = Notification
+
+
+  //datatables
+  // import "bootstrap/dist/css/bootstrap.min.css"
+  // import "datatables.net-bs5";
+  // import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+  // import "datatables.net-buttons-bs5";
+  // import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+  // import "pdfmake";
+  // import "jszip";
+  // import "jquery";
+  // import "datatables.net-buttons/js/buttons.colVis.js";
+  // import "datatables.net-buttons/js/buttons.html5.js";
+  // import "datatables.net-buttons/js/buttons.print.js";
+  // import "datatables.net-buttons/js/buttons.flash.js";
+
+
 
 
 

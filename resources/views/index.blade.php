@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 
-            <!-- <link rel="shortcut icon" type="image/x-icon" href="{{url('/Image/icon.png')}}" />  -->
+     <!-- <link rel="shortcut icon" type="image/x-icon" href="{{url('/Image/icon.png')}}" />  -->
 
     <title>Trischel Admin Dashboard</title>
     <link rel="apple-touch-icon" href="{{ asset('vbackend/app-assets/images/ico/apple-icon-120.png') }}">
@@ -26,6 +26,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/editors/quill/katex.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/editors/quill/monokai-sublime.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/vendors/css/editors/quill/quill.snow.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -37,6 +42,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/themes/bordered-layout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/themes/semi-dark-layout.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/forms/pickers/form-pickadate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/forms/pickers/form-flat-pickr.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/forms/form-validation.css') }}">
+
+    
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/forms/form-quill-editor.css') }}">
+
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/dashboard-ecommerce.css') }}">
@@ -45,11 +58,22 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/core/menu/menu-types/vertical-menu.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/forms/form-validation.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/page-auth.css') }} ">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/core/menu/menu-types/vertical-menu.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/page-profile.css') }} ">
+
+    
+ 
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/page-blog.css') }} ">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+
+<!-- 
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"> -->
 
 </head>
 <!-- END: Head-->
@@ -99,21 +123,19 @@
                         <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="search">
                         <div class="search-input-close"><i data-feather="x"></i></div>
                         <ul class="search-list search-list-main"></ul>
-
-                        
                     </div>
 
                     <li class="nav-item d-none d-lg-block">
                     
                     
                     
-                    <a class="nav-link dropdown-toggle dropdown-user-link">
+                    <router-link class="nav-link dropdown-toggle dropdown-user-link" to="/editProfile">
                     
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">John Doe</span><span class="user-status">
-                        Admin </span>
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">Yohan Perera</span><span class="user-status">
+                        1050 </span>
                         </div><span class="avatar"><img class="round" src="{{ asset('vBackend/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     
-                    </a>
+                    </router-link>
 
                     
                     </li>
@@ -142,7 +164,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true" v-show="$route.path === '/' || $route.path === '/register'  || $route.path === '/forget' ? false:true " id="sidebar"   style="display:none">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="/"><span class="brand-logo">
+                <li class="nav-item mr-auto"> <router-link class="navbar-brand" to="/"><span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -167,8 +189,10 @@
                                 </g>
                             </svg></span>
                         <h2 class="brand-text">TRISCHEL</h2>
-                    </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
+                    </router-link>
+                    </li>
+                <li class="nav-item nav-toggle">
+                <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
             </ul>
         </div>
         <div class="shadow-bottom"></div>
@@ -176,48 +200,128 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning badge-pill ml-auto mr-1">3</span></a>
                     <ul class="menu-content">
-                        <li class="active">
+
+                        <li>
                         <router-link class="d-flex align-items-center"  to="/" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></router-link>
                         </li>
 
-                        
-
-                        <li ><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Controll</span></a>
+                        <li >
+                        <router-link class="d-flex align-items-center"  to="/" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Controll</span></router-link>
                         </li>
 
-                        <li ><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Trischel Academy</span></a>
+                        <li >
+                        <router-link class="d-flex align-items-center"  to="/blog" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Trischel Academy</span></router-link>
                         </li>
+
                     </ul>
                 </li>
+
+
+                <li class=" navigation-header"><span data-i18n="Sustainability">Manage Sustainability</span><i data-feather="more-horizontal"></i>
+                </li>
+               
+                   
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="pie-chart"></i><span class="menu-title text-truncate" data-i18n="Charts">Sustainability</span><span class="badge badge-light-danger badge-pill ml-auto mr-2">5</span></a>
+                        <ul class="menu-content">
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/manageAll" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Manage All</span></router-link>
+                            </li>
+                            <li>  
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/ene" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Energy Sources</span></router-link>
+                            </li>
+                            <li>  
+                            <router-link class="d-flex align-items-center"  to="/water" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Water</span></router-link>
+                            </li>
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/waste" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Waste</span></router-link>
+                            </li>
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/production" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Production</span></router-link>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Admins &amp; Users</span><i data-feather="more-horizontal"></i>
                 </li>
                
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Admins</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Admins</span></a>
+                        <ul class="menu-content">
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/show-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Admin</span></router-link>
+                            </li>
+                            <li>  
+                            <router-link class="d-flex align-items-center"  to="/store-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Admin</span></router-link>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Users</span></a>
+                    
                     <ul class="menu-content">
                         <li>
-                        <router-link class="d-flex align-items-center"  to="/show-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Admin</span></router-link>
-                        </li>
-                        <li>  
-                        <router-link class="d-flex align-items-center"  to="/store-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Add Admin</span></router-link>
+                    <router-link class="d-flex align-items-center"  to="/show-user" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Users</span></router-link>
                         </li>
 
+                        <li>
+                        <router-link class="d-flex align-items-center" to="/store-user"> <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add User</span></router-link>
+                        </li>
                     </ul>
                 </li>
 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Users</span></a>
-                    <ul class="menu-content">
-                        <li>
-                       
-                       <router-link class="d-flex align-items-center"  to="/show-user" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Users</span></router-link>
-                        </li>
-                        <li>
-                        <router-link class="d-flex align-items-center" to="/store-user"> <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Add User</span></router-link>
+
+
+                     <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Posts &amp; Categories </span><i data-feather="more-horizontal"></i>
+                </li>
+                    
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Posts</span></a>
+                        <ul class="menu-content">
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/blogAdd" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Posts</span></router-link>
+                            </li>
+                            <li>  
+                            <router-link class="d-flex align-items-center"  to="/blogAdd" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Post</span></router-link>
+                            </li>
+
+                        </ul>
+
                         
-                
-                        </li>
+                    </li>
 
-                    </ul>
+
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Post Categories</span></a>
+                        <ul class="menu-content">
+                            <li>
+                            <router-link class="d-flex align-items-center"  to="/show-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Categories</span></router-link>
+                            </li>
+                            <li>  
+                            <router-link class="d-flex align-items-center"  to="/store-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Category</span></router-link>
+                            </li>
+
+                        </ul>
+
+                        
+                    </li>
+
+               
+
+
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Profile Settings</span><i data-feather="more-horizontal"></i>
                 </li>
+               
+                   
+                  <li>
+                  <router-link class="d-flex align-items-center"  to="/myProfile" ><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><span class="menu-item text-truncate"  data-i18n="List">My Profile</span></router-link>
+                  </li>
+
+                  <li>
+                  <router-link class="d-flex align-items-center"  to="/editProfile" ><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="menu-item text-truncate"  data-i18n="List">Change Details</span></router-link>
+                  </li>
+                         
+
 
  
             </ul>
@@ -226,16 +330,9 @@
     <!-- END: Main Menu-->
 
 
-
        <!-- BEGIN: Content-->
-
-            
           <router-view></router-view>
-
-
- 
-      
-    <!-- END: Content-->
+        <!-- END: Content-->
 
 
 
@@ -244,12 +341,11 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light"  id="fotter" v-show="$route.path === '/' || $route.path === '/register'  || $route.path === '/forget' ? false:true " style="display:none">
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="ml-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Trischel Fabric</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://masmalima.com/trischel-fabric-pvt-ltd/" target="_blank">Trischel Fabric</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Trischel Team<i data-feather="heart"></i></span></p>
     </footer>
     
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
-
     </div>
 
 
@@ -257,8 +353,6 @@
 
     <!-- //vue -->
     <script src="{{asset('js/app.js') }}"></script> 
-
-
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('vbackend/app-assets/vendors/js/vendors.min.js') }}"></script>
@@ -272,8 +366,8 @@
     <!-- END: Page Vendor JS-->
 
 
-       <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <!-- <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
@@ -285,22 +379,30 @@
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('vbackend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script> -->
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('vbackend/app-assets/js/core/app-menu.js') }}"></script>
     <script src="{{ asset('vbackend/app-assets/js/core/app.js') }}"></script>
     <!-- END: Theme JS-->
+    <script src="{{ asset('vbackend/app-assets/js/scripts/pages/page-profile.js') }}"></script>
+
 
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('vbackend/app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
     <!-- END: Page JS-->
 
+    
+    <script src="{{ asset('vbackend/app-assets/js/scripts/pages/page-account-settings.js') }}"></script>
+
     <!-- BEGIN: Page JS-->
-    <script src="{{ asset('vbackend/app-assets/js/scripts/tables/table-datatables-basic.js') }} "></script>
+    <!-- <script src="{{ asset('vbackend/app-assets/js/scripts/tables/table-datatables-basic.js') }} "></script> -->
     <!-- END: Page JS-->
 
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script> -->
 
 
     <script>

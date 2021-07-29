@@ -8,6 +8,17 @@ let logout = require('./components/Auth/logout.vue').default;
 let home = require('./components/home.vue').default;
 
 
+let blog = require('./components/blog/index.vue').default;
+let blogDetails = require('./components/blog/details.vue').default;
+let blogEdit = require('./components/blog/edit.vue').default;
+let blogAdd = require('./components/blog/create.vue').default;
+
+// myProfile
+let myProfile = require('./components/myProfile/myProfile.vue').default; 
+let editProfile = require('./components/myProfile/editProfile.vue').default; 
+
+
+
 //test
 let test = require('./components/ExampleComponent.vue').default;
 let new1 = require('./components/new.vue').default;
@@ -78,6 +89,19 @@ let edituser = require('./components/users/edit.vue').default;
 let storeadmin = require('./components/admins/create.vue').default;
 let admin = require('./components/admins/index.vue').default;
 let editadmin = require('./components/admins/edit.vue').default;
+
+
+
+//susta components
+let energy = require('./components/susta/energy.vue').default;
+let waste = require('./components/susta/waste.vue').default;
+let water = require('./components/susta/water.vue').default;
+let production = require('./components/susta/production.vue').default;
+let ene = require('./components/susta/ene.vue').default;
+let manageAll = require('./components/susta/Manage.vue').default;
+
+
+
 
 
 
@@ -173,6 +197,27 @@ export const routes = [
     { path: '/store-admin', component: storeadmin, name:'store-admin' },
     { path: '/show-admin', component: admin, name:'show-admin' },
     { path: '/edit-admin/:id', component: editadmin, name:'edit-admin' },
+
+    //blog
+    { path: '/blog', component: blog, name:'blog' },
+    { path: '/blogDetails', component: blogDetails, name:'blogDetails' },
+    { path: '/blogEdit', component: blogEdit, name:'blogEdit' },
+    { path: '/blogAdd', component: blogAdd, name:'blogAdd' },
+
+
+    //myProfile
+    { path: '/myProfile', component: myProfile, name:'myProfile' },
+    { path: '/editProfile', component: editProfile, name:'editProfile' },
+
+    //susta
+    { path: '/energy ', component: energy, name:'energy' },
+    { path: '/waste', component: waste, name:'waste' },
+    { path: '/water', component: water, name:'water' },
+    { path: '/production', component: production, name:'production' },
+    { path: '/ene', component: ene, name:'ene' },
+    { path: '/manageAll', component: manageAll, name:'manageAll' },
+
+    
   
 
 ]
