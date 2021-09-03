@@ -15,6 +15,14 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\trischel\userController;
 use App\Http\Controllers\trischel\adminController;
 use App\Http\Controllers\trischel\sustainController;
+use App\Http\Controllers\trischel\blogCategoryController;
+use App\Http\Controllers\trischel\myProfileontroller;
+
+use App\Http\Controllers\trischel\sustainWaterController;
+use App\Http\Controllers\trischel\sustainWasteController;
+use App\Http\Controllers\trischel\sustainProductionController;
+
+
 
 
 Route::group([
@@ -160,6 +168,89 @@ Route::group([
     Route::get('/adminSelect/{id}', [adminController::class, 'show']);
     Route::patch('/adminUpdate/{id}', [adminController::class, 'update']); 
 
+
+    //blog catagory page
+    Route::get('/category', [blogCategoryController::class, 'index']);
+    Route::post('/categoryStore', [blogCategoryController::class, 'store']);
+    Route::delete('/categoryDelete/{id}', [blogCategoryController::class, 'destroy']);
+    Route::get('/categorySelect/{id}', [blogCategoryController::class, 'show']);
+    Route::patch('/categoryUpdate/{id}', [blogCategoryController::class, 'update']); 
+
+    // Route::get('/getcategory', [blogCategoryController::class, 'getcategory']);
+
+    Route::post('/postStore', [blogCategoryController::class, 'postStore']);
+    Route::get('/postindex', [blogCategoryController::class, 'postindex']);
+    Route::delete('/postDelete/{id}', [blogCategoryController::class, 'postDelete']);
+    Route::patch('/updatePost/{id}', [blogCategoryController::class, 'updatePost']); 
+
+    //for acedemy 
+    Route::get('/postSelect/{id}', [blogCategoryController::class, 'postSelect']);
+    Route::get('/recentpost', [blogCategoryController::class, 'recentpost']);
+
+ 
+
     //sustainability page
     
-    Route::get('/years', [sustainController::class, 'years']);
+    // Route::get('/years', [sustainController::class, 'years']);
+    Route::get('/getyears', [sustainController::class, 'getyears']);
+    Route::get('/getyearsWater', [sustainWaterController::class, 'getyears']);
+    Route::get('/getyearsWaste', [sustainWasteController::class, 'getyears']);
+    Route::get('/getyearsProduction', [sustainProductionController::class, 'getyears']);
+
+    Route::delete('/YearDelete/{year}', [sustainController::class, 'YearDelete']);
+    Route::delete('/WaterYearDelete/{year}', [sustainWaterController::class, 'YearDelete']);
+    Route::delete('/WaterYearDelete/{year}', [sustainWasteController::class, 'YearDelete']);
+    Route::delete('/WaterYearDelete/{year}', [sustainProductionController::class, 'YearDelete']);
+
+    
+    Route::get('/updateYear/{year}', [sustainController::class, 'updateYear']);
+    Route::get('/updateYearWater/{year}', [sustainWaterController::class, 'updateYear']);
+    Route::get('/updateYearWaste/{year}', [sustainWasteController::class, 'updateYear']);
+    Route::get('/updateYearProduction/{year}', [sustainProductionController::class, 'updateYear']);
+
+
+    // energy source
+    Route::get('/getenSus/{year}', [sustainController::class, 'getenSus']);
+    Route::post('/engStore', [sustainController::class, 'engStore']);
+    Route::get('/energySelect/{id}', [sustainController::class, 'energySelect']);
+    Route::patch('/updateEnergy/{id}', [sustainController::class, 'updateEnergy']); 
+    Route::delete('/EnergyDelete/{id}', [sustainController::class, 'EnergyDelete']);
+
+
+
+    // water
+    Route::get('/getWater/{year}', [sustainWaterController::class, 'getWater']);
+    Route::post('/waterStore', [sustainWaterController::class, 'waterStore']);
+    Route::get('/waterSelect/{id}', [sustainWaterController::class, 'waterSelect']);
+    Route::patch('/updateWater/{id}', [sustainWaterController::class, 'updateWater']); 
+    Route::delete('/waterDelete/{id}', [sustainWaterController::class, 'waterDelete']);
+
+        // waste
+    Route::get('/getWaste/{year}', [sustainWasteController::class, 'getWaste']);
+    Route::post('/wasteStore', [sustainWasteController::class, 'wasteStore']);
+    Route::get('/wasteSelect/{id}', [sustainWasteController::class, 'wasteSelect']);
+    Route::patch('/updateWaste/{id}', [sustainWasteController::class, 'updateWaste']); 
+    Route::delete('/wasterDelete/{id}', [sustainWasteController::class, 'wasterDelete']);
+
+    // production
+    Route::get('/getProduction/{year}', [sustainProductionController::class, 'getProduction']);
+    Route::post('/productionStore', [sustainProductionController::class, 'productionStore']);
+    Route::get('/productionSelect/{id}', [sustainProductionController::class, 'productionSelect']);
+    Route::patch('/updateProduction/{id}', [sustainProductionController::class, 'updateProduction']); 
+    Route::delete('/productionDelete/{id}', [sustainProductionController::class, 'productionDelete']);
+    
+    
+
+    
+
+
+    
+
+    
+
+    
+    
+   
+   
+    // myDetails
+    Route::get('/myDetails/{name}', [myProfileontroller::class, 'index']);

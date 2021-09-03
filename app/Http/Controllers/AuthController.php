@@ -33,6 +33,8 @@ class AuthController extends Controller
         ]);
 
         $credentials = request(['email', 'password']);
+        // setcookie("profileName", 'name');
+
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Email or Password Invalid'], 401);
@@ -107,7 +109,9 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'name' => auth()->user()->name,
             'user_id' => auth()->user()->id,
-            'email' =>auth()->user()->email
+            'email' =>auth()->user()->email,
+            
+
 
         ]);
     }

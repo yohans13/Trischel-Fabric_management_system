@@ -22,7 +22,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Today Sell Amount</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Production</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{todaysell}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Today Income</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Waste</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">${{income}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
@@ -62,7 +62,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Today Due</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Water</div>
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{due}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
@@ -82,7 +82,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Today Expense</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Enargy Sources</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">${{expense}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
@@ -104,7 +104,7 @@
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Out Of Stock</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Sustainability Details</h6>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">

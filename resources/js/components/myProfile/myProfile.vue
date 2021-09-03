@@ -21,9 +21,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-             
-                </div>
+                </div> 
+            </div>
             </div>
             <div class="content-body">
                 <div id="user-profile">
@@ -43,7 +42,7 @@
                                         </div>
                                         <!-- profile title -->
                                         <div class="profile-title ml-3">
-                                            <h2 class="text-green">Yohan Perera</h2>
+                                            <h2 class="text-green"> name </h2>
                                             <p class="text-green">Intern</p>
                                         </div>
                                     </div>
@@ -257,8 +256,18 @@
 
    
 export default {
+      created(){
+                  if(!User.loggedIn()){
+                   this.$router.push({name: '/'})
+                  }
+                },
+                   created(){
+                 
+                  this.myDetails();
+         
+                   },
 
-   data(){
+                 data(){
                   return {
 
 
@@ -268,12 +277,28 @@ export default {
                     profile: 'vbackend/app-assets/images/portrait/small/avatar-s-11.jpg',
                     postprofile: 'vbackend/app-assets/images/portrait/small/avatar-s-11.jpg',
                     post: 'vbackend/app-assets/images/profile/post-media/2.jpg',
-                  
+
+                    
+                    details:'',
+
                         },
                         errors:{}
                       }
                   },
+
+                   methods:{
+                  myDetails(){
+
+                      let name=window.localStorage.getItem('user');
+
+                    axios.get('/api/myDetails'+ name)
+                    .then(({data})=>(this.details=data))
+                    .catch()
+                  },
+                   
+                
   
+}
 }
 
 </script>

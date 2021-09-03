@@ -22,26 +22,13 @@
                                           <code class="highlighter-rouge">Energy Sources </code>Electricity (kw) | steam (ton) | Diesel (l) | HFO (l) | Thermic heater (kcal) | <code class="highlighter-rouge">Water </code>Raw Water Intake (<span>&#13221;</span>) | Effluent water discharge (<span>&#13221;</span>), 
                                           <code class="highlighter-rouge">waste </code>Fabric (kg) | Contaminated fabric (kg).
 
-                                        </p>
-
-                                     
-
-
-                                       <!-- <div class="col-md-6 col-12"> 
-                                            
-                                            <div class="form-group"> 
-                                               <label for="basicSelect">Select Year</label>
-                                                <select class="form-control" id="basicSelect">
-                                                    <option>IT</option>
-                                                    <option>Blade Runner</option>
-                                                    <option>Thor Ragnarok</option>
-                                                </select>
-                                            </div>  
-                                       </div> -->
-                                </div>
-
-                           
+                                        </p><br>
  
+                                                <h4 class="text-warning">{{form.year}} Sustainability Chart</h4>
+                                
+
+                                    
+                                   </div>
                                 </div>
 
                                 
@@ -51,29 +38,107 @@
                                       <option :value="department.id" v-for="department in departments" :key="department.id"> {{department.dname}} </option>
 
                                     </select> -->
-                                     <div class="card-body">
-                                <p class="card-text">
-
-                                   <div class="form-group"> 
-                                               <label for="basicSelect">Select Year</label>
-                                                <select class="form-control" id="basicSelect">
-                                                    <option>2021</option>
-                                                    <option>2022</option>
-                                                    <option>2023</option>
-                                                </select>
-                                            </div>  
-
-
-                                   <!-- <input type="text" v-model="searchTerm" placeholder="Search user name" class="form-control" style="width:300px;">  -->
-
-                                </p>
-                            </div>
 
 
                                  
 
                             </div>
+
+                                
                             <div class="table-responsive">
+
+                                <div class="btn-group ml-1 mb-1">
+                                           
+                                             <div class="col-md-6">
+                                            <!-- Basic trigger modal -->
+                                            <div class="basic-modal">
+                                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#select2InModal">
+                                                    Year
+                                                </button>
+
+                                                 
+                                                <!-- Modal -->
+                                                <div class="modal fade text-left" id="select2InModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel1">Change Year</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>PLease select year.</p>
+
+                                                                <label for="select2Demo">Select Year</label>
+                                                                <select class="select2InModal form-control form-control-lg" id="select2Demo">
+                                                                    <option value="AK">2010</option>
+                                                                    <option value="AK">2011</option>
+                                                                    <option value="AK">2012</option>
+                                                                    <option value="AK">2013</option>
+                                                                    <option value="AK">2014</option>
+                                                                    <option value="AK">2015</option>
+                                                                    <option value="AK">2016</option>
+                                                                    <option value="AK">2017</option>
+                                                                    <option value="AK">2018</option>
+                                                                    <option value="AK">2019</option>
+                                                                    <option value="AK">2020</option>
+                                                                    <option value="AK">2021</option>
+                                                                    <option value="AK">2022</option>
+                                                                    <option value="AK">2023</option>
+                                                                    <option value="AK">2024</option>
+                                                                    <option value="AK">2025</option>
+                                                                    <option value="AK">2026</option>
+                                                                    <option value="AK">2027</option>
+                                                                    <option value="AK">2028</option>
+                                                                    <option value="AK">2029</option>
+                                                                    <option value="AK">2030</option>
+                                                                    <option value="AK">2031</option>
+                                                                    <option value="AK">2032</option>
+                                                                    <option value="AK">2033</option>
+                                                                    <option value="AK">2034</option>
+                                                                    <option value="AK">2035</option>
+                                                                    <option value="AK">2036</option>
+                                                                    <option value="AK">2037</option>
+                                                                    <option value="AK">2038</option>
+                                                                    <option value="AK">2039</option>
+                                                                    <option value="AK">2040</option>
+                                                                    <option value="AK">2041</option>
+                                                                    <option value="AK">2042</option>
+                                                                    <option value="AK">2043</option>
+                                                                    <option value="AK">2044</option>
+                                                                    <option value="AK">2045</option>
+                                                                    <option value="AK">2046</option>
+                                                                    <option value="AK">2047</option>
+                                                                    <option value="AK">2048</option>
+                                                                    <option value="AK">2049</option>
+                                                                    <option value="AK">2050</option>
+                                                                    <option value="AK">2051</option>
+                                                                    <option value="AK">2052</option>
+                                                                    <option value="AK">2053</option>
+                                                                    <option value="AK">2054</option>
+                                                                    <option value="AK">2055</option>
+                                                                    <option value="AK">2056</option>
+                                                                    <option value="AK">2057</option>
+                                                                    <option value="AK">2058</option>
+                                                                    <option value="AK">2059</option>
+                                                                    <option value="AK">2060</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <!-- Basic trigger modal end -->
+                                        </div>
+
+                                        </div>
+                                        
                                 <table class="table table-sm">
                                     <thead>
                                         <tr>
@@ -100,8 +165,11 @@
                                             <td class="text-nowrap">
                                             <div class="custom-control custom-control-info custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="ejan" checked /><br>
+                                            <!-- <button type="button" class="btn btn-outline-primary" id="ajax-request">Ajax</button> -->
                                             <label class="custom-control-label" for="ejan">00</label>
                                             </div>
+
+                                            
                                             </td>
                                             <td class="text-nowrap">
                                             <div class="custom-control custom-control-info custom-checkbox">
@@ -989,8 +1057,11 @@
 
                        form:{
                    
-                    editicon: 'vbackend/app-assets/images/icons/edit.svg',
-                    trushicon: 'vbackend/app-assets/images/icons/trash.svg', 
+                    battery: 'vbackend/app-assets/images/sus/battery-48.png',
+                    bin: 'vbackend/app-assets/images/sus/bin-48.png',
+                    water: 'vbackend/app-assets/images/sus/water.png',
+                    product: 'vbackend/app-assets/images/sus/pipeline-48.png', 
+                    year:'2021',
                       
                          },
 

@@ -210,71 +210,7 @@
                       }
                     })  
 
-                },
-
-                isActive(id){
-                    Swal.fire({
-                      title: 'Are you sure?',
-                      text: "Deactive this employee!",
-                      icon: 'warning',
-                      showCancelButton: true,
-                      confirmButtonColor: '#3085d6',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'Yes, Deactive it!'
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        
-                          axios.patch('/api/isActiveUser/'+id)
-                            .then(() =>{
-                                window.location.reload();
-                                // location.reload();
-                              
-                            })
-                            .catch(()=>{
-                              this.$route.push({name:'show-user'})
-                            })
-                          Swal.fire(
-                          'Deactivated!',
-                          'This Account has been Deactivated.',
-                          'success'
-                        )
-                      }
-                    })  
-
-                },
-
-
-
-                 isDeactive(id){
-                    Swal.fire({
-                      title: 'Are you sure?',
-                      text: "Deactive this employee!",
-                      icon: 'warning',
-                      showCancelButton: true,
-                      confirmButtonColor: '#3085d6',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'Yes, Re-active it!'
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        
-                          axios.patch('/api/isDeactiveUser/'+id)
-                            .then(() =>{
-                                 
-                                window.location.reload();
-
-                            })
-                            .catch(()=>{
-                              this.$route.push({name:'show-user'})
-                            })
-                          Swal.fire(
-                          'Deactivated!',
-                          'This Account has been Activated.',
-                          'success'
-                        )
-                      }
-                    })  
-
-                },
+                }, 
 
 
               },

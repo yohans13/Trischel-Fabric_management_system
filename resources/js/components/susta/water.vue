@@ -130,7 +130,7 @@
 
                                          <tr>
                                           
-                                            <td class="text-nowrap">Effluent water discharge (<span>&#13221;</span>)</td>
+                                            <td class="text-nowrap">(<span>&#13221Effluent water discharge ;</span>)</td>
                                             <td class="text-nowrap">
                                             <div class="custom-control custom-control-primary custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="rjanq" checked /><br>

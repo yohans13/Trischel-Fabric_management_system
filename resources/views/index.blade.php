@@ -62,6 +62,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/core/menu/menu-types/vertical-menu.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/page-profile.css') }} ">
 
+    <!-- sweet alrt -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/plugins/extensions/ext-component-sweet-alerts.css') }} ">
+
+
     
  
     <link rel="stylesheet" type="text/css" href="{{ asset('vbackend/app-assets/css/pages/page-blog.css') }} ">
@@ -75,6 +79,15 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"> -->
 
+
+    <!-- tiny text editor -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
 </head>
 <!-- END: Head-->
 
@@ -120,19 +133,17 @@
                 <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
                     <div class="search-input">
                         <div class="search-input-icon"><i data-feather="search"></i></div>
-                        <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="search">
+                        <input class="form-control input" type="text" placeholder="Explore..." tabindex="-1" data-search="search">
                         <div class="search-input-close"><i data-feather="x"></i></div>
                         <ul class="search-list search-list-main"></ul>
                     </div>
-
                     <li class="nav-item d-none d-lg-block">
                     
                     
                     
                     <router-link class="nav-link dropdown-toggle dropdown-user-link" to="/editProfile">
                     
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">Yohan Perera</span><span class="user-status">
-                        1050 </span>
+                        <div class="user-nav d-sm-flex d-none"> <span class="user-name font-weight-bolder"> <span id="profile"> </span> </span>
                         </div><span class="avatar"><img class="round" src="{{ asset('vBackend/app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     
                     </router-link>
@@ -198,19 +209,19 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning badge-pill ml-auto mr-1">3</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning badge-pill ml-auto mr-1">2</span></a>
                     <ul class="menu-content">
 
                         <li>
                         <router-link class="d-flex align-items-center"  to="/" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></router-link>
                         </li>
 
-                        <li >
+                        <!-- <li >
                         <router-link class="d-flex align-items-center"  to="/" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Controll</span></router-link>
-                        </li>
+                        </li> -->
 
                         <li >
-                        <router-link class="d-flex align-items-center"  to="/blog" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Trischel Academy</span></router-link>
+                        <router-link class="d-flex align-items-center"  to="/acedemy" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Trischel Academy</span></router-link>
                         </li>
 
                     </ul>
@@ -280,7 +291,7 @@
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Manage Posts</span></a>
                         <ul class="menu-content">
                             <li>
-                            <router-link class="d-flex align-items-center"  to="/blogAdd" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Posts</span></router-link>
+                            <router-link class="d-flex align-items-center"  to="/allBlogs" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Posts</span></router-link>
                             </li>
                             <li>  
                             <router-link class="d-flex align-items-center"  to="/blogAdd" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Post</span></router-link>
@@ -295,10 +306,10 @@
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Post Categories</span></a>
                         <ul class="menu-content">
                             <li>
-                            <router-link class="d-flex align-items-center"  to="/show-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Categories</span></router-link>
+                            <router-link class="d-flex align-items-center"  to="/show-category" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Categories</span></router-link>
                             </li>
                             <li>  
-                            <router-link class="d-flex align-items-center"  to="/store-admin" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Category</span></router-link>
+                            <router-link class="d-flex align-items-center"  to="/store-category" ><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Category</span></router-link>
                             </li>
 
                         </ul>
@@ -352,6 +363,7 @@
 
 
     <!-- //vue -->
+    <!-- Load all vue components -->
     <script src="{{asset('js/app.js') }}"></script> 
 
     <!-- BEGIN: Vendor JS-->
@@ -366,21 +378,6 @@
     <!-- END: Page Vendor JS-->
 
 
-    <!-- BEGIN: Page Vendor JS-->
-    <!-- <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/jszip.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
-    <script src="{{ asset('vbackend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script> -->
-    <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('vbackend/app-assets/js/core/app-menu.js') }}"></script>
@@ -396,9 +393,10 @@
     
     <script src="{{ asset('vbackend/app-assets/js/scripts/pages/page-account-settings.js') }}"></script>
 
-    <!-- BEGIN: Page JS-->
-    <!-- <script src="{{ asset('vbackend/app-assets/js/scripts/tables/table-datatables-basic.js') }} "></script> -->
-    <!-- END: Page JS-->
+    <!-- //sweet alert -->
+    <script src="{{ asset('vbackend/app-assets/js/scripts/extensions/ext-component-sweet-alerts.js') }}"></script>
+
+
 
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
@@ -415,22 +413,33 @@
             }
         })
 
-        
+
+        document.getElementById("profile").innerHTML=window.localStorage.getItem('user');
+
+        // jwt tokens
       let token = localStorage.getItem('token');
 
+
+    //   if token get show sidebar and topbar 
       if(token){
           $('#sidebar').css("display","");
           $('#topbar').css("display","");
       }
 
+        //show profile name with this localstorage data
+      document.getElementById('name').innerHTML=  getCookie("profileName");
+
+    
+
     </script>
 
 
-<script>
+<!-- for load model -->
+<!-- <script>
   export default {
     props: ['message', 'onOk']
   }
-</script>
+</script> -->
 
 
 

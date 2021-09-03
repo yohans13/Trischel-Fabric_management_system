@@ -222,6 +222,7 @@
                         reader.readAsDataURL(file)
                     //   }
                     },
+
                     userUpdate(){
                     let id =this.$route.params.id
 
@@ -229,11 +230,10 @@
                         .then(()=>{
                           this.$router.push({name:'show-user'})
                           Notification.success()
-                          
                         })
                    .catch(error => this.errors=error.response.data.errors )
 
-                    }
+                    },
 
                   }
 

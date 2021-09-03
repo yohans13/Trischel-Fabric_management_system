@@ -187,13 +187,10 @@
                     let id =this.$route.params.id
                     axios.get('/api/adminSelect/'+id)
                     .then (({data}) =>(this.form=data))
-                    .catch(console.log('error'))
-                  
+                    .catch(console.log('error')) 
 
                      axios.get('/api/department')
-                    .then(({data})=>(this.departments = data))
-
-                   
+                    .then(({data})=>(this.departments = data)) 
 
                   },
                 

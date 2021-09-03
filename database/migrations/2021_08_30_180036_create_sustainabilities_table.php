@@ -1,0 +1,47 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateSustainabilitiesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('sustainabilities', function (Blueprint $table) {
+            $table->id();
+            $table->string('mainName');
+            $table->string('subName');
+            $table->string('year');
+
+            $table->string('jan')->nullable();
+            $table->string('feb')->nullable();
+            $table->string('mar')->nullable();
+            $table->string('aprl')->nullable();
+            $table->string('may')->nullable();
+            $table->string('june')->nullable();
+            $table->string('july')->nullable();
+            $table->string('aug')->nullable();
+            $table->string('sep')->nullable();
+            $table->string('oct')->nullable();
+            $table->string('nov')->nullable();
+            $table->string('dec')->nullable(); 
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('sustainabilities');
+    }
+}

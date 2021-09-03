@@ -123,6 +123,8 @@
                                     title: 'Signed in successfully'
                                   })
                                 this.$router.push({name: 'home'})
+                                  window.location.reload();
+
                                })
                               // Toast.close()
 

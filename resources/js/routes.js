@@ -36,7 +36,7 @@ let editsupplier = require('./components/supplier/edit.vue').default;
 
 //Category components
 let storecategory = require('./components/category/create.vue').default;
-let category = require('./components/category/index.vue').default;
+let scategory = require('./components/category/index.vue').default;
 let editcategory = require('./components/category/edit.vue').default;
 
 //product components
@@ -90,16 +90,50 @@ let storeadmin = require('./components/admins/create.vue').default;
 let admin = require('./components/admins/index.vue').default;
 let editadmin = require('./components/admins/edit.vue').default;
 
+// blog components
+let storeCategory = require('./components/blog/category/create.vue').default;
+let category = require('./components/blog/category/index.vue').default;
+let editCategory = require('./components/blog/category/edit.vue').default;
+let allBlogs = require('./components/blog/index.vue').default;
+
+let editPost = require('./components/blog/edit.vue').default;
+
+//acedemy
+let acedemy = require('./components/acedemy/index.vue').default;
+let acedemyDetails = require('./components/acedemy/details.vue').default;
 
 
-//susta components
-let energy = require('./components/susta/energy.vue').default;
-let waste = require('./components/susta/waste.vue').default;
-let water = require('./components/susta/water.vue').default;
-let production = require('./components/susta/production.vue').default;
-let ene = require('./components/susta/ene.vue').default;
+
+// let Blog = require('./components/blog/index.vue').default;
+
+
+
+//susta components   
 let manageAll = require('./components/susta/Manage.vue').default;
 
+
+// let energy = require('./components/susta/energy.vue').default;
+
+let ene = require('./components/susta/ene.vue').default;
+let newsus = require('./components/susta/newsus.vue').default;
+let editEnergy = require('./components/susta/enargyEdit.vue').default;
+
+let water = require('./components/susta/water/index.vue').default;
+let newwater = require('./components/susta/water/create.vue').default;
+let editwater = require('./components/susta/water/Edit.vue').default;
+
+let waste = require('./components/susta/waste/index.vue').default;
+let newwaste = require('./components/susta/waste/create.vue').default;
+let editwaste = require('./components/susta/waste/Edit.vue').default;
+
+let production = require('./components/susta/production/index.vue').default;
+let newproduction = require('./components/susta/production/create.vue').default;
+let editproduction = require('./components/susta/production/Edit.vue').default;
+
+
+
+
+ 
 
 
 
@@ -133,9 +167,9 @@ export const routes = [
 
 
   //Category routes
-  { path: '/store-category', component: storecategory, name:'store-category' },
-  { path: '/show-category', component: category, name:'show-category' },
-  { path: '/edit-category/:id', component: editcategory, name:'edit-category' },
+  // { path: '/store-category', component: storecategory, name:'store-category' },
+  // { path: '/show-category', component: category, name:'show-category' },
+  // { path: '/edit-category/:id', component: editcategory, name:'edit-category' },
 
 
 
@@ -201,23 +235,55 @@ export const routes = [
     //blog
     { path: '/blog', component: blog, name:'blog' },
     { path: '/blogDetails', component: blogDetails, name:'blogDetails' },
-    { path: '/blogEdit', component: blogEdit, name:'blogEdit' },
+    { path: '/editPost/:id', component: editPost, name:'editPost' },
     { path: '/blogAdd', component: blogAdd, name:'blogAdd' },
+    { path: '/allBlogs', component: allBlogs, name:'allBlogs' },
+
+
+    { path: '/store-category', component: storeCategory, name:'store-category' },
+    { path: '/show-category', component: category, name:'show-category' },
+    { path: '/edit-category/:id', component: editCategory, name:'edit-category' },
+
+    //acedemy
+    { path: '/acedemy', component: acedemy, name:'acedemy' },
+    { path: '/acedemyDetails/:id', component: acedemyDetails, name:'acedemyDetails' },
 
 
     //myProfile
     { path: '/myProfile', component: myProfile, name:'myProfile' },
     { path: '/editProfile', component: editProfile, name:'editProfile' },
 
-    //susta
-    { path: '/energy ', component: energy, name:'energy' },
-    { path: '/waste', component: waste, name:'waste' },
-    { path: '/water', component: water, name:'water' },
-    { path: '/production', component: production, name:'production' },
-    { path: '/ene', component: ene, name:'ene' },
+
+
+
+    //sustainability routes
+    // { path: '/energy ', component: energy, name:'energy' },
+
     { path: '/manageAll', component: manageAll, name:'manageAll' },
 
+
+    { path: '/ene', component: ene, name:'ene' },
+    { path: '/newsus', component: newsus, name:'newsus' }, 
+    { path: '/editEnergy/:id', component: editEnergy, name:'editEnergy' }, 
+
     
-  
+    { path: '/waste', component: waste, name:'waste' },
+    { path: '/newwaste', component: newwaste, name:'newwaste' },
+    { path: '/editwaste/:id', component: editwaste, name:'editwaste' },
+    
+
+
+    { path: '/water', component: water, name:'water' },
+    { path: '/newwater', component: newwater, name:'newwater' },
+    { path: '/editwater/:id', component: editwater, name:'editwater' },
+
+
+
+    { path: '/production', component: production, name:'production' },
+    { path: '/newproduction', component: newproduction, name:'newproduction' },
+    { path: '/editproduction/:id', component: editproduction, name:'editproduction' },
+
+    
+ 
 
 ]
